@@ -10,6 +10,9 @@ console.log("I'm rich!");
 
 document.getElementById("copyright").innerText = new Date().getFullYear();
 
+let humanScore = 0;
+let computerScore = 0;
+
 
 // randomly return one of the following strings: "rock", "paper", "scissors"
 // consider Math.random()
@@ -28,5 +31,15 @@ function getComputerChoice() {
         return computerChoice = "Something went horribly wrong!"
     }
 }
-console.log(getComputerChoice());
+//console.log(getComputerChoice());
+
+
+// Use prompt to get the user's input
+function getHumanChoice() {
+    let promptAnswer = prompt("Do you choose rock, paper, or scissors?...", "rock, paper, scissors");
+    return humanChoice = promptAnswer.toLowerCase();
+}
+
+// console.log(getHumanChoice());
+
 
