@@ -35,11 +35,54 @@ function getComputerChoice() {
 
 
 // Use prompt to get the user's input
+// Might need to debug as 'undefined' logs after a failed answer followed by a correct answer
 function getHumanChoice() {
-    let promptAnswer = prompt("Do you choose rock, paper, or scissors?...", "rock, paper, scissors");
-    return humanChoice = promptAnswer.toLowerCase();
+    let promptAnswer = prompt("Please choose rock, paper, or scissors...", "rock, paper, scissors");
+    humanChoice = promptAnswer.toLowerCase();
+
+    if (humanChoice == "rock" || humanChoice == "paper" || humanChoice == "scissors") {
+        return humanChoice;
+    } else {
+        return getHumanChoice();
+    }
+
 }
 
 // console.log(getHumanChoice());
 
+// use IF to check answers
+// need to compare human vs computer choices and choose winner
+// print to console if the human tied, won, or lost
+// make Scores for human and computer
+// increment Score for the winner of the round
+function playRound(humanChoice, computerChoice) {
+    if (
+        (humanChoice == "rock" && computerChoice == "rock")
+        || (humanChoice == "paper" && computerChoice == "paper")
+        || (humanChoice == "scissors" && computerChoice == "scissors")
+    ) {
+        console.log("It's a tie!");
+    } else if (
+        (humanChoice == "rock" && computerChoice == "scissors")
+        || (humanChoice == "paper" && computerChoice == "rock")
+        || (humanChoice == "scissors" && computerChoice == "paper")
+    ) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        humanScore += 1;
+    } else if (
+        (humanChoice == "rock" && computerChoice == "paper")
+        || (humanChoice == "paper" && computerChoice == "scissors")
+        || (humanChoice == "scissors" && computerChoice == "rock")
+    ) {
+        console.log(`You lose! ${humanChoice} loses to ${computerChoice}`);
+        computerScore += 1;
+    } else {
+        console.log("Something has failed.")
+    }
+    console.log(`Score = You: ${humanScore} vs Computer: ${computerScore}`)
+}
 
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
